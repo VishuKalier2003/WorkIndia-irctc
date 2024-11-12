@@ -43,7 +43,7 @@ Now the folder are structured to exploit the concept of microservices, such that
 
 ---
 
-![Test](https://1drv.ms/i/c/a04cbeb414585193/EUOHpEFv1KtGgMEa_MU3MtEBedS5dIILZty5sz8LW9GvOw?e=tG5CNi)
+![Test](./WorkIndia.jpg)
 
 
 
