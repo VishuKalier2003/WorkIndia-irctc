@@ -6,9 +6,9 @@ This repository is for the assignment provided by WorkIndia. The project encapsu
 
 Also, make sure to have MySQL installed in the localhost. It may not be necessary to have a database named 'irctc' created in MySQL.
 
-After installing these packages, run the below command to start the api
+After installing these packages, enter into the parent directory of `WorkIndia` and run the below command to start the api, do not use `node app.js`, since the codebase is developed in ES6, which might create conflicting dependencies in some localhost environments.
 
-    node app.js
+    nodemon app.js
 
 ---
 
