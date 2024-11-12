@@ -1,5 +1,6 @@
 import { database } from "../databaseConnection.js";
 
+// Middleware 1...
 const checkUserExists = (username) => {
     return new Promise((resolve, reject) => {
         const query = 'SELECT * FROM users WHERE LOWER(username) = LOWER(?)';
@@ -14,6 +15,7 @@ const checkUserExists = (username) => {
     });
 };
 
+// Middleware 2...
 const checkUserLogged = (username) => {
     return new Promise((resolve, reject) => {
         const query = 'SELECT * FROM logged WHERE LOWER(username) = LOWER(?)';

@@ -42,6 +42,7 @@ const addDataTrain = (trainName, trainNumber) => {
     });
 };
 
+// Function to add cities
 const addDataCities = (city) => {
     return new Promise((resolve, reject) => {
         const query = `INSERT IGNORE INTO cities(name) VALUES(?)`;
@@ -55,6 +56,7 @@ const addDataCities = (city) => {
     });
 };
 
+// add train data
 const addDataTimings = (id, trainName, trainNumber, station1, station2, time1, time2, seats) => {
     return new Promise((resolve, reject) => {
         const query = `INSERT IGNORE INTO timings(id, name, number, station1, station2, time1, time2, seats) VALUES(?, ?, ?, ?, ?, ?, ?, ?)`;
@@ -68,6 +70,7 @@ const addDataTimings = (id, trainName, trainNumber, station1, station2, time1, t
     });
 };
 
+// update train seats
 const addTrainSeats = (seats, id) => {
     return new Promise((resolve, reject) => {
         const query = `UPDATE timings SET seats = ? WHERE id = ?`;
@@ -78,6 +81,7 @@ const addTrainSeats = (seats, id) => {
     })
 }
 
+// get train data
 const getTrain = (number, station1, station2) => {
     return new Promise((resolve, reject) => {
         const query = `SELECT * FROM timings WHERE name = ? AND station1 = ? AND station2 = ?`;
@@ -90,6 +94,7 @@ const getTrain = (number, station1, station2) => {
     })
 }
 
+// update booking status
 const updateTrainBooking = (seats, number, station1, station2) => {
     return new Promise((resolve, reject) => {
         const query = `UPDATE timings SET seats = ? WHERE number = ? AND station1 = ? AND station2 = ?`;

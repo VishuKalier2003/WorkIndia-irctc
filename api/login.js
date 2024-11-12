@@ -14,6 +14,7 @@ const addUser = (username, name, password) => {
     });
 };
 
+// login user
 const loginUser = (username, password) => {
     return new Promise((resolve, reject) => {
         const query = `INSERT IGNORE INTO logged(username, password, login) VALUES(?, ?, NOW())`;
@@ -24,6 +25,7 @@ const loginUser = (username, password) => {
     })
 }
 
+// Checks every minute, to delete the inactive users
 setInterval(() => {
     return new Promise((resolve, reject) => {
         const query = `DELETE FROM logged WHERE TIMESTAMPDIFF(MINUTE, login, NOW()) >= 5`;
@@ -31,8 +33,6 @@ setInterval(() => {
             if(err) {reject(err);}
             else {
                 if (results.affectedRows > 0) {
-                    // Assuming there is a field 'username' in the 'logged' table
-                    // You can log the result to confirm which user was deleted
                     console.log(`User(s) deleted at ${new Date().toISOString()}`);
                     console.log(`Deleted ${results.affectedRows} user(s) due to timeout.`);
                 }
@@ -42,6 +42,7 @@ setInterval(() => {
     })
 }, 60000);
 
+// search query between two stations
 const searchQuery = (station1, station2) => {
     return new Promise((resolve, reject) => {
         const query = `SELECT * FROM timings WHERE LOWER(station1) = LOWER(?) AND LOWER(station2) = LOWER(?)`;

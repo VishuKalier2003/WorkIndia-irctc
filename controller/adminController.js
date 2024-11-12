@@ -1,8 +1,9 @@
 import basic from "../api/basic.js";
 import express from 'express';
 
-const adminRouter = express.Router();
+const adminRouter = express.Router();       // Router exported...
 
+// Admin to update seats...
 adminRouter.put('/admin/:id/:seats/:uid', async (req, res) => {
     const {seats : seats, id : id, uid : uid} = req.params;
     try {
@@ -17,6 +18,7 @@ adminRouter.put('/admin/:id/:seats/:uid', async (req, res) => {
     }
 });
 
+// Admin to create train...
 adminRouter.post('/admin/createTrain/:uid', async(req, res) => {
     const {uid : uid} = req.params;
     const {id, name, number, station1, station2, time1, time2, seats} = req.body;

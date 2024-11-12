@@ -4,8 +4,9 @@ import middleware from '../api/middleware.js';
 import express from 'express';
 import generateAuthToken from '../data/authToken.js';
 
-const publicRouter = express.Router();
+const publicRouter = express.Router();      // Router exported...
 
+// Adding user into the database...
 publicRouter.post('/adduser', async (req, res) => {
     try {
         const { username, name, password } = req.body;
@@ -18,6 +19,7 @@ publicRouter.post('/adduser', async (req, res) => {
     }
 });
 
+// Making user active and ready for booking...
 publicRouter.post('/login/:username/:password', async(req, res) => {
     try {
         const {username : username, password : password} = req.params;
@@ -31,6 +33,7 @@ publicRouter.post('/login/:username/:password', async(req, res) => {
     }
 });
 
+// Checking the train status...
 publicRouter.get('/see/:st1/:st2/:username', async(req, res) => {
     const {st1 : station1, st2 : station2, username : username} = req.params;
     try {
@@ -48,8 +51,9 @@ publicRouter.get('/see/:st1/:st2/:username', async(req, res) => {
     }
 })
 
-const userQueue = new Map();
+const userQueue = new Map();        // Map Data Structure...
 
+// Booking code logic...
 publicRouter.put('/booking/:username/:name/:st1/:st2', async (req, res) => {
     const { username, name, st1: station1, st2: station2 } = req.params;
     try {
@@ -77,6 +81,7 @@ publicRouter.put('/booking/:username/:name/:st1/:st2', async (req, res) => {
     }
 });
 
+// Booking train function...
 const bookTrain = async (trainSeats) => {
     const { trainNumber, username, seats: Seats, station1, station2 } = trainSeats;
     if (!userQueue.has(trainNumber)) {
@@ -92,6 +97,7 @@ const bookTrain = async (trainSeats) => {
     }
 };
 
+// Whne booking is in process (Atomicity maintained)...
 const processBooking = async (trainSeats) => {
     const { trainNumber, username, seats: Seats } = trainSeats;
     let seats = Seats.split(" ");

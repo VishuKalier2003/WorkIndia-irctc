@@ -4,6 +4,7 @@ import express from 'express';
 
 const testRouter = express.Router();
 
+// Test trains added...
 testRouter.post('/train/testTrains', async (req, res) => {
     try {
         for(let i = 0; i < trainData.length; i++) {
@@ -16,6 +17,7 @@ testRouter.post('/train/testTrains', async (req, res) => {
     }
 });
 
+// Test Timings and cities added...
 testRouter.post('/timings/testTimings', async (req, res) => {
     try {
         for(let i = 0; i < timingData.length; i++) {

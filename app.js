@@ -1,3 +1,5 @@
+// Application file - app.js
+
 import { database, datapool } from "./databaseConnection.js";
 import express from 'express';
 import defaultTables from './api/tables.js';

@@ -1,3 +1,5 @@
+// Tables Schema defined...
+
 const createTrainTable = `
     CREATE TABLE IF NOT EXISTS trains (
     name VARCHAR(100) NOT NULL UNIQUE,

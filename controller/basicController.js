@@ -1,8 +1,9 @@
 import basic from "../api/basic.js";
 import express from 'express';
 
-const basicRouter = express.Router();
+const basicRouter = express.Router();       // Router exported...
 
+// SHowing all tables...
 basicRouter.get(`/tables/all`, async (req, res) => {
     try {
         const result = await basic.tableAll();
@@ -13,6 +14,7 @@ basicRouter.get(`/tables/all`, async (req, res) => {
     }
 });
 
+// Showing specific table...
 basicRouter.get(`/table/:name`, async (req, res) => {
     const { name } = req.params;
     try {
@@ -24,6 +26,7 @@ basicRouter.get(`/table/:name`, async (req, res) => {
     }
 });
 
+// adding train data...
 basicRouter.post(`/train/add`, async (req, res) => {
     const { name, number } = req.body;
     try {
